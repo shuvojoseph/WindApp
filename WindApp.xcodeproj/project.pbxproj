@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C965C3B662816F007D34FD8 /* Pods_WindApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 13C4C55D04214E97ECB4A49C /* Pods_WindApp.framework */; };
 		C8242A3829B72CC600A61E2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8242A3729B72CC600A61E2B /* AppDelegate.swift */; };
 		C8242A3A29B72CC600A61E2B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8242A3929B72CC600A61E2B /* SceneDelegate.swift */; };
 		C8242A3C29B72CC600A61E2B /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8242A3B29B72CC600A61E2B /* AuthenticationViewController.swift */; };
@@ -17,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		13C4C55D04214E97ECB4A49C /* Pods_WindApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WindApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5EA9871D0DE8928B350B1F21 /* Pods-WindApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WindApp.debug.xcconfig"; path = "Target Support Files/Pods-WindApp/Pods-WindApp.debug.xcconfig"; sourceTree = "<group>"; };
+		C4982DAB2140B3820A3914A5 /* Pods-WindApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WindApp.release.xcconfig"; path = "Target Support Files/Pods-WindApp/Pods-WindApp.release.xcconfig"; sourceTree = "<group>"; };
 		C8242A3429B72CC600A61E2B /* WindApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WindApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8242A3729B72CC600A61E2B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C8242A3929B72CC600A61E2B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -33,17 +37,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C965C3B662816F007D34FD8 /* Pods_WindApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0066939A3FCE95CCA7FEC560 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				13C4C55D04214E97ECB4A49C /* Pods_WindApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		02DDD54F268C93AFF82F7504 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5EA9871D0DE8928B350B1F21 /* Pods-WindApp.debug.xcconfig */,
+				C4982DAB2140B3820A3914A5 /* Pods-WindApp.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		C8242A2B29B72CC600A61E2B = {
 			isa = PBXGroup;
 			children = (
 				C8242A3629B72CC600A61E2B /* WindApp */,
 				C8242A3529B72CC600A61E2B /* Products */,
+				02DDD54F268C93AFF82F7504 /* Pods */,
+				0066939A3FCE95CCA7FEC560 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -85,9 +110,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C8242A4829B72CD100A61E2B /* Build configuration list for PBXNativeTarget "WindApp" */;
 			buildPhases = (
+				5A9B4D0E14978933BBBB454F /* [CP] Check Pods Manifest.lock */,
 				C8242A3029B72CC600A61E2B /* Sources */,
 				C8242A3129B72CC600A61E2B /* Frameworks */,
 				C8242A3229B72CC600A61E2B /* Resources */,
+				BFC446BD2232199881E4BCD9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -142,6 +169,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5A9B4D0E14978933BBBB454F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WindApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BFC446BD2232199881E4BCD9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WindApp/Pods-WindApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WindApp/Pods-WindApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WindApp/Pods-WindApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C8242A3029B72CC600A61E2B /* Sources */ = {
@@ -295,6 +364,7 @@
 		};
 		C8242A4929B72CD100A61E2B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5EA9871D0DE8928B350B1F21 /* Pods-WindApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -313,6 +383,7 @@
 		};
 		C8242A4A29B72CD100A61E2B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C4982DAB2140B3820A3914A5 /* Pods-WindApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

@@ -17,21 +17,29 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NK4-t8-dcC">
-                                <rect key="frame" x="184" y="433" width="46" height="30"/>
+                                <rect key="frame" x="184" y="617" width="46" height="30"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="gotoSendFund:" destination="BYZ-38-t0r" eventType="touchUpInside" id="S5V-b5-Vtg"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HfC-v3-Xpc" customClass="SVPinView" customModule="SVPinView">
+                                <rect key="frame" x="20" y="320" width="374" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="NK4-t8-dcC" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="2Fn-Ic-v3w"/>
+                            <constraint firstItem="NK4-t8-dcC" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="184" id="2Fn-Ic-v3w"/>
                             <constraint firstItem="NK4-t8-dcC" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vjx-Ly-PWp"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="nIU-OZ-6lS"/>
+                    <connections>
+                        <outlet property="pinView" destination="HfC-v3-Xpc" id="nv2-ye-c2B"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
