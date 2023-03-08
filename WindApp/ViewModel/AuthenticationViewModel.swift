@@ -8,17 +8,40 @@
 import Foundation
 
 protocol AuthenticationViewModelDelegate {
-    func checkIfValidUserName()
     func didReceiveLoginResponse()
+    func enableContinueButton()
+    func disableContinueButton()
 }
 
-struct AuthenticationViewModel
+class AuthenticationViewModel
 {
-    var delegate : AuthenticationViewModelDelegate?
     
-    func validateUserName()
+    var delegate : AuthenticationViewModelDelegate?
+    var isValidUserName:Bool = false
+    var isPinEntered:Bool = false
+    
+    
+    func validateUserName(userName:String)
     {
+        //print(userName)
+        let validationResult = LoginValidation().validateUsername(userName: userName)
         
+        isValidUserName = validationResult.success
+        checkAndUpdateContinueButton()
+    }
+    
+    func checkAndUpdateContinueButton()
+    {
+        //print("isValidUserName \(isValidUserName) isPinEntered \(isPinEntered)")
+        if(isValidUserName && isPinEntered)
+        {
+            print("Enable Button.")
+            delegate?.enableContinueButton()
+        }
+         else {
+            delegate?.disableContinueButton()
+            print("Button not Enabled.")
+        }
     }
     
     func loginUser()

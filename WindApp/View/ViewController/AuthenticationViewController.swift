@@ -8,9 +8,17 @@
 import UIKit
 import SVPinView
 
-class AuthenticationViewController: UIViewController {
-
-    @IBOutlet var pinView: SVPinView!
+class AuthenticationViewController: UIViewController, AuthenticationViewModelDelegate {
+    
+    func didReceiveLoginResponse() {
+        
+    }
+    
+    @IBOutlet weak var pinView: SVPinView!
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var continueButton: UIButton!
+    
+    private var authenticationViewModel = AuthenticationViewModel()
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -25,7 +33,10 @@ class AuthenticationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        authenticationViewModel.delegate = self
+        authenticationViewModel.checkAndUpdateContinueButton()
         configurePinView()
+        usernameTextField.addTarget(self, action: #selector(usernmaeTextFieldDidChange(_:)), for: .editingChanged)
         // Do any additional setup after loading the view.
     }
     
@@ -69,6 +80,8 @@ class AuthenticationViewController: UIViewController {
         pinView.didFinishCallback = didFinishEnteringPin(pin:)
         pinView.didChangeCallback = { pin in
             print("The entered pin is \(pin)")
+            self.authenticationViewModel.isPinEntered = false
+            self.authenticationViewModel.checkAndUpdateContinueButton()
         }
     }
     
@@ -76,15 +89,36 @@ class AuthenticationViewController: UIViewController {
         self.view.endEditing(false)
     }
     
+    func enableContinueButton()
+    {
+        continueButton.isEnabled = true
+        continueButton.backgroundColor = UIColor(red: 104/255, green: 76/255, blue: 255/255, alpha: 1)
+    }
+    
+    func disableContinueButton()
+    {
+        continueButton.isEnabled = false
+        continueButton.backgroundColor = UIColor(red: 181/255, green: 166/255, blue: 255/255, alpha: 1)
+    }
+    
     func didFinishEnteringPin(pin:String) {
-        showAlert(title: "Success", message: "The Pin entered is \(pin)")
+        //showAlert(title: "Success", message: "The Pin entered is \(pin)")
+        authenticationViewModel.isPinEntered = true
+        authenticationViewModel.checkAndUpdateContinueButton()
     }
     
     // MARK: Helper Functions
-    func showAlert(title:String, message:String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+    /*
+     func showAlert(title:String, message:String) {
+     let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+     alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+     self.present(alert, animated: true, completion: nil)
+     }
+     */
+    
+    @objc func usernmaeTextFieldDidChange(_ textField: UITextField) {
+        print("Username Input: " + textField.text!)
+        authenticationViewModel.validateUserName(userName: textField.text!)
     }
     
     @IBAction func gotoSendFund(_ sender: Any) {

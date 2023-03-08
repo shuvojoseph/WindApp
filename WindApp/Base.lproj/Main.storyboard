@@ -66,7 +66,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NK4-t8-dcC">
                                 <rect key="frame" x="25" y="607" width="364" height="50"/>
-                                <color key="backgroundColor" red="0.43137254901960786" green="0.31372549019607843" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.40784313725490196" green="0.29650795460000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="lYw-ri-6Um"/>
                                 </constraints>
@@ -116,7 +116,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="nIU-OZ-6lS"/>
                     <connections>
+                        <outlet property="continueButton" destination="NK4-t8-dcC" id="ITh-gA-EOc"/>
                         <outlet property="pinView" destination="HfC-v3-Xpc" id="nv2-ye-c2B"/>
+                        <outlet property="usernameTextField" destination="xGZ-QP-U1R" id="5GY-8e-QyA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
