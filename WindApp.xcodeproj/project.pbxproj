@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,11 @@
 		C8242A4129B72CD100A61E2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8242A4029B72CD100A61E2B /* Assets.xcassets */; };
 		C8242A4429B72CD100A61E2B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8242A4229B72CD100A61E2B /* LaunchScreen.storyboard */; };
 		C8242A4F29B7309B00A61E2B /* SendFundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8242A4E29B7309B00A61E2B /* SendFundViewController.swift */; };
+		C831C18529B8652000E2BEB8 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C831C18429B8652000E2BEB8 /* AuthenticationViewModel.swift */; };
+		C831C18C29B8706400E2BEB8 /* ApiEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = C831C18B29B8706400E2BEB8 /* ApiEndpoints.swift */; };
+		C831C19129B870CF00E2BEB8 /* LoginValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C831C19029B870CF00E2BEB8 /* LoginValidation.swift */; };
+		C831C19429B870FD00E2BEB8 /* ValidationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C831C19329B870FD00E2BEB8 /* ValidationResult.swift */; };
+		C831C19729B8716E00E2BEB8 /* HttpUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = C831C19629B8716E00E2BEB8 /* HttpUtility.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +35,11 @@
 		C8242A4329B72CD100A61E2B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C8242A4529B72CD100A61E2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C8242A4E29B7309B00A61E2B /* SendFundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendFundViewController.swift; sourceTree = "<group>"; };
+		C831C18429B8652000E2BEB8 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+		C831C18B29B8706400E2BEB8 /* ApiEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiEndpoints.swift; sourceTree = "<group>"; };
+		C831C19029B870CF00E2BEB8 /* LoginValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginValidation.swift; sourceTree = "<group>"; };
+		C831C19329B870FD00E2BEB8 /* ValidationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationResult.swift; sourceTree = "<group>"; };
+		C831C19629B8716E00E2BEB8 /* HttpUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpUtility.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +68,6 @@
 				5EA9871D0DE8928B350B1F21 /* Pods-WindApp.debug.xcconfig */,
 				C4982DAB2140B3820A3914A5 /* Pods-WindApp.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -83,6 +92,11 @@
 		C8242A3629B72CC600A61E2B /* WindApp */ = {
 			isa = PBXGroup;
 			children = (
+				C831C18F29B870AA00E2BEB8 /* Validation */,
+				C831C18A29B8703E00E2BEB8 /* Common */,
+				C831C18929B86DD000E2BEB8 /* Model */,
+				C831C18829B86D7E00E2BEB8 /* Services */,
+				C831C18329B864E300E2BEB8 /* ViewModel */,
 				C8242A5729B73A4100A61E2B /* View */,
 				C8242A3729B72CC600A61E2B /* AppDelegate.swift */,
 				C8242A3929B72CC600A61E2B /* SceneDelegate.swift */,
@@ -97,10 +111,66 @@
 		C8242A5729B73A4100A61E2B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C831C19A29B872A200E2BEB8 /* Custom */,
+				C831C19929B8729200E2BEB8 /* ViewController */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C831C18329B864E300E2BEB8 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C831C18429B8652000E2BEB8 /* AuthenticationViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C831C18829B86D7E00E2BEB8 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				C831C19629B8716E00E2BEB8 /* HttpUtility.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		C831C18929B86DD000E2BEB8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C831C18A29B8703E00E2BEB8 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				C831C18B29B8706400E2BEB8 /* ApiEndpoints.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		C831C18F29B870AA00E2BEB8 /* Validation */ = {
+			isa = PBXGroup;
+			children = (
+				C831C19029B870CF00E2BEB8 /* LoginValidation.swift */,
+				C831C19329B870FD00E2BEB8 /* ValidationResult.swift */,
+			);
+			path = Validation;
+			sourceTree = "<group>";
+		};
+		C831C19929B8729200E2BEB8 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
 				C8242A3B29B72CC600A61E2B /* AuthenticationViewController.swift */,
 				C8242A4E29B7309B00A61E2B /* SendFundViewController.swift */,
 			);
-			path = View;
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		C831C19A29B872A200E2BEB8 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Custom;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,6 +288,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8242A3C29B72CC600A61E2B /* AuthenticationViewController.swift in Sources */,
+				C831C18C29B8706400E2BEB8 /* ApiEndpoints.swift in Sources */,
+				C831C18529B8652000E2BEB8 /* AuthenticationViewModel.swift in Sources */,
+				C831C19729B8716E00E2BEB8 /* HttpUtility.swift in Sources */,
+				C831C19429B870FD00E2BEB8 /* ValidationResult.swift in Sources */,
+				C831C19129B870CF00E2BEB8 /* LoginValidation.swift in Sources */,
 				C8242A4F29B7309B00A61E2B /* SendFundViewController.swift in Sources */,
 				C8242A3829B72CC600A61E2B /* AppDelegate.swift in Sources */,
 				C8242A3A29B72CC600A61E2B /* SceneDelegate.swift in Sources */,
