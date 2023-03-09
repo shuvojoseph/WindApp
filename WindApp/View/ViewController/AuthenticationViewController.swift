@@ -122,10 +122,13 @@ class AuthenticationViewController: UIViewController, AuthenticationViewModelDel
     }
     
     @IBAction func gotoSendFund(_ sender: Any) {
-        
+        let request = LoginRequest(user: usernameTextField.text, pin: pinView.getPin())
+        authenticationViewModel.loginUser(loginRequest: request)
+        /*
         let sendFundViewController = self.storyboard?.instantiateViewController(withIdentifier: "sendFund") as! SendFundViewController
         self.navigationController?.pushViewController(sendFundViewController, animated: true)
- 
+         */
+
     }
     
 }

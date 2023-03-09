@@ -44,9 +44,23 @@ class AuthenticationViewModel
         }
     }
     
-    func loginUser()
+    func loginUser(loginRequest: LoginRequest)
     {
-      
+            
+            let loginResource = LoginResource()
+        
+            loginResource.loginUser(loginRequest: loginRequest) { (loginApiResponse) in
+
+                
+                print(loginApiResponse)
+                //return the response we get from loginResource
+                /*
+                DispatchQueue.main.async {
+                    self.delegate?.didReceiveLoginResponse(loginResponse: loginApiResponse)
+                }
+                */
+            }
+        
     }
     
 }

@@ -9,6 +9,6 @@ import Foundation
 
 struct ApiEndpoints
 {
-    static let login = "https://"
+    static let login = "https://wind-assessment-api.vercel.app/api/v1/login"
     
 }

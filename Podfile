@@ -8,5 +8,6 @@ target 'WindApp' do
   # Pods for WindApp
 
   pod 'SVPinView', '~> 1.0'
+  pod 'Alamofire'
 
 end
