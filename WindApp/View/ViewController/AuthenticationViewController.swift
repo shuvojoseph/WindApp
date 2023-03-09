@@ -8,7 +8,7 @@
 import UIKit
 import SVPinView
 
-class AuthenticationViewController: UIViewController, AuthenticationViewModelDelegate {
+class AuthenticationViewController: UIViewController, AuthenticationViewModelDelegate, UITextFieldDelegate {
     
     
     @IBOutlet weak var pinView: SVPinView!
@@ -34,6 +34,7 @@ class AuthenticationViewController: UIViewController, AuthenticationViewModelDel
         authenticationViewModel.checkAndUpdateContinueButton()
         configurePinView()
         usernameTextField.addTarget(self, action: #selector(usernmaeTextFieldDidChange(_:)), for: .editingChanged)
+        usernameTextField.delegate = self
         // Do any additional setup after loading the view.
     }
     
@@ -114,13 +115,25 @@ class AuthenticationViewController: UIViewController, AuthenticationViewModelDel
      */
     
     @objc func usernmaeTextFieldDidChange(_ textField: UITextField) {
-        print("Username Input: " + textField.text!)
-        authenticationViewModel.validateUserName(userName: textField.text!)
+        //print("Username Input: " + textField.text!)
+        //authenticationViewModel.validateUserName(userName: textField.text!)
+        print("Username Input: " + (textField.text?.lowercased())!)
+        authenticationViewModel.validateUserName(userName: (textField.text?.lowercased())!)
     }
     
     @IBAction func gotoSendFund(_ sender: Any) {
         let request = LoginRequest(user: usernameTextField.text, pin: pinView.getPin())
         authenticationViewModel.loginUser(loginRequest: request)
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
+    {
+        if string == " "
+        {
+            return false
+        }
+        
+        return true
     }
     
     func didReceiveLoginResponse(loginResponse: LoginResponse?) {
