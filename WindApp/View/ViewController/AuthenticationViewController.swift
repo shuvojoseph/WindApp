@@ -149,9 +149,7 @@ class AuthenticationViewController: UIViewController, AuthenticationViewModelDel
             let alert = UIAlertController(title: "Error", message: loginResponse?.messages[0], preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
             self.present(alert, animated: true)
-            
         }
     }
-    
 }
 

@@ -11,8 +11,17 @@ class SendFundViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.title = "Send Fund"
+        changeNavigationBackButton()
         // Do any additional setup after loading the view.
+    }
+    
+    func changeNavigationBackButton()
+    {
+        let yourBackImage = UIImage(systemName: "arrow.backward")
+        self.navigationController?.navigationBar.backIndicatorImage = yourBackImage
+        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = yourBackImage
+        self.navigationController?.navigationBar.topItem?.title = "";
     }
     
 
