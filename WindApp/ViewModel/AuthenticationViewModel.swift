@@ -8,7 +8,7 @@
 import Foundation
 
 protocol AuthenticationViewModelDelegate {
-    func didReceiveLoginResponse()
+    func didReceiveLoginResponse(loginResponse: LoginResponse?)
     func enableContinueButton()
     func disableContinueButton()
 }
@@ -35,12 +35,12 @@ class AuthenticationViewModel
         //print("isValidUserName \(isValidUserName) isPinEntered \(isPinEntered)")
         if(isValidUserName && isPinEntered)
         {
-            print("Enable Button.")
+            //print("Enable Button.")
             delegate?.enableContinueButton()
         }
          else {
             delegate?.disableContinueButton()
-            print("Button not Enabled.")
+            //print("Button not Enabled.")
         }
     }
     
@@ -51,16 +51,11 @@ class AuthenticationViewModel
         
             loginResource.loginUser(loginRequest: loginRequest) { (loginApiResponse) in
 
-                
-                print(loginApiResponse)
+                //print(loginApiResponse)
                 //return the response we get from loginResource
-                /*
                 DispatchQueue.main.async {
                     self.delegate?.didReceiveLoginResponse(loginResponse: loginApiResponse)
                 }
-                */
             }
-        
     }
-    
 }

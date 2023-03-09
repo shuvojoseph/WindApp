@@ -10,9 +10,6 @@ import SVPinView
 
 class AuthenticationViewController: UIViewController, AuthenticationViewModelDelegate {
     
-    func didReceiveLoginResponse() {
-        
-    }
     
     @IBOutlet weak var pinView: SVPinView!
     @IBOutlet weak var usernameTextField: UITextField!
@@ -124,11 +121,23 @@ class AuthenticationViewController: UIViewController, AuthenticationViewModelDel
     @IBAction func gotoSendFund(_ sender: Any) {
         let request = LoginRequest(user: usernameTextField.text, pin: pinView.getPin())
         authenticationViewModel.loginUser(loginRequest: request)
-        /*
-        let sendFundViewController = self.storyboard?.instantiateViewController(withIdentifier: "sendFund") as! SendFundViewController
-        self.navigationController?.pushViewController(sendFundViewController, animated: true)
-         */
-
+    }
+    
+    func didReceiveLoginResponse(loginResponse: LoginResponse?) {
+        if(loginResponse?.status == true)
+        {
+            debugPrint("Send to SendFundViewController")
+            let sendFundViewController = self.storyboard?.instantiateViewController(withIdentifier: "sendFund") as! SendFundViewController
+            self.navigationController?.pushViewController(sendFundViewController, animated: true)
+        }
+        else
+        {
+            //print(loginResponse?.messages)
+            let alert = UIAlertController(title: "Error", message: loginResponse?.messages[0], preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true)
+            
+        }
     }
     
 }
