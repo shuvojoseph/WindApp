@@ -10,14 +10,13 @@ import SVPinView
 
 class AuthenticationViewController: UIViewController, AuthenticationViewModelDelegate, UITextFieldDelegate {
     
-    
     @IBOutlet weak var pinView: SVPinView!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var continueButton: UIButton!
     
     private var authenticationViewModel = AuthenticationViewModel()
     
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
@@ -36,11 +35,7 @@ class AuthenticationViewController: UIViewController, AuthenticationViewModelDel
         configurePinView()
         usernameTextField.addTarget(self, action: #selector(usernmaeTextFieldDidChange(_:)), for: .editingChanged)
         usernameTextField.delegate = self
-        
-        // Do any additional setup after loading the view.
     }
-    
-    
     
     func configurePinView() {
         
@@ -93,10 +88,6 @@ class AuthenticationViewController: UIViewController, AuthenticationViewModelDel
         authenticationViewModel.checkAndUpdateContinueButton()
     }
     
-    @objc func dismissKeyboard() {
-        self.view.endEditing(false)
-    }
-    
     @objc func usernmaeTextFieldDidChange(_ textField: UITextField) {
         //print("Username Input: " + textField.text!)
         //authenticationViewModel.validateUserName(userName: textField.text!)
@@ -104,52 +95,11 @@ class AuthenticationViewController: UIViewController, AuthenticationViewModelDel
         authenticationViewModel.validateUserName(userName: (textField.text?.lowercased())!)
     }
     
-    func enableContinueButton()
-    {
-        continueButton.isEnabled = true
-        continueButton.backgroundColor = UIColor(red: 104/255, green: 76/255, blue: 255/255, alpha: 1)
-    }
-    
-    func disableContinueButton()
-    {
-        continueButton.isEnabled = false
-        continueButton.backgroundColor = UIColor(red: 181/255, green: 166/255, blue: 255/255, alpha: 1)
-    }
-    
     // MARK: Helper Functions
-
-    
     @IBAction func gotoSendFund(_ sender: Any) {
         let request = LoginRequest(user: usernameTextField.text?.lowercased(), pin: pinView.getPin())
         authenticationViewModel.loginUser(loginRequest: request)
     }
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
-    {
-        if string == " "
-        {
-            return false
-        }
         
-        return true
-    }
-    
-    func didReceiveLoginResponse(loginResponse: LoginResponse?) {
-        if(loginResponse?.status == true)
-        {
-            debugPrint("Send to SendFundViewController")
-            let sendFundViewController = self.storyboard?.instantiateViewController(withIdentifier: "sendFund") as! SendFundViewController
-            sendFundViewController.userInfo = loginResponse?.data?.userInfo
-            sendFundViewController.accountInfo = loginResponse?.data?.accountInfo
-            self.navigationController?.pushViewController(sendFundViewController, animated: true)
-        }
-        else
-        {
-            //print(loginResponse?.messages)
-            let alert = UIAlertController(title: "Error", message: loginResponse?.messages[0], preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-            self.present(alert, animated: true)
-        }
-    }
 }
 

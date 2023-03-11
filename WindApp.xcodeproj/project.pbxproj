@@ -24,6 +24,8 @@
 		C831C19429B870FD00E2BEB8 /* ValidationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C831C19329B870FD00E2BEB8 /* ValidationResult.swift */; };
 		C831C19729B8716E00E2BEB8 /* HttpUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = C831C19629B8716E00E2BEB8 /* HttpUtility.swift */; };
 		C87F5F2129BC91C500FB5EDF /* SendFundViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87F5F2029BC91C500FB5EDF /* SendFundViewModel.swift */; };
+		C8ABAE2E29BCB0C5009C63BA /* AuthenticationViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8ABAE2D29BCB0C5009C63BA /* AuthenticationViewControllerExtension.swift */; };
+		C8ABAE3129BCB3AD009C63BA /* SendFundViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8ABAE3029BCB3AD009C63BA /* SendFundViewControllerExtension.swift */; };
 		C8F5692029B9BC1C009C95EA /* JSONAble.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F5691F29B9BC1C009C95EA /* JSONAble.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +51,8 @@
 		C831C19329B870FD00E2BEB8 /* ValidationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationResult.swift; sourceTree = "<group>"; };
 		C831C19629B8716E00E2BEB8 /* HttpUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpUtility.swift; sourceTree = "<group>"; };
 		C87F5F2029BC91C500FB5EDF /* SendFundViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendFundViewModel.swift; sourceTree = "<group>"; };
+		C8ABAE2D29BCB0C5009C63BA /* AuthenticationViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewControllerExtension.swift; sourceTree = "<group>"; };
+		C8ABAE3029BCB3AD009C63BA /* SendFundViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendFundViewControllerExtension.swift; sourceTree = "<group>"; };
 		C8F5691F29B9BC1C009C95EA /* JSONAble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONAble.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,6 +126,7 @@
 		C8242A5729B73A4100A61E2B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C8ABAE2C29BCB0A1009C63BA /* Extension */,
 				C831C19A29B872A200E2BEB8 /* Custom */,
 				C831C19929B8729200E2BEB8 /* ViewController */,
 			);
@@ -202,6 +207,15 @@
 			children = (
 			);
 			path = Custom;
+			sourceTree = "<group>";
+		};
+		C8ABAE2C29BCB0A1009C63BA /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C8ABAE2D29BCB0C5009C63BA /* AuthenticationViewControllerExtension.swift */,
+				C8ABAE3029BCB3AD009C63BA /* SendFundViewControllerExtension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -321,6 +335,7 @@
 				C8242A3C29B72CC600A61E2B /* AuthenticationViewController.swift in Sources */,
 				C82B134929B8ABCE00BB9910 /* LoginResource.swift in Sources */,
 				C82B135029B8AC6400BB9910 /* LoginResponse.swift in Sources */,
+				C8ABAE3129BCB3AD009C63BA /* SendFundViewControllerExtension.swift in Sources */,
 				C831C18C29B8706400E2BEB8 /* ApiEndpoints.swift in Sources */,
 				C831C18529B8652000E2BEB8 /* AuthenticationViewModel.swift in Sources */,
 				C831C19729B8716E00E2BEB8 /* HttpUtility.swift in Sources */,
@@ -331,6 +346,7 @@
 				C8242A3A29B72CC600A61E2B /* SceneDelegate.swift in Sources */,
 				C87F5F2129BC91C500FB5EDF /* SendFundViewModel.swift in Sources */,
 				C82B134D29B8AC4900BB9910 /* LoginRequest.swift in Sources */,
+				C8ABAE2E29BCB0C5009C63BA /* AuthenticationViewControllerExtension.swift in Sources */,
 				C8F5692029B9BC1C009C95EA /* JSONAble.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
