@@ -21,6 +21,7 @@ class AuthenticationViewController: UIViewController, AuthenticationViewModelDel
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
+        usernameTextField.becomeFirstResponder()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -35,8 +36,11 @@ class AuthenticationViewController: UIViewController, AuthenticationViewModelDel
         configurePinView()
         usernameTextField.addTarget(self, action: #selector(usernmaeTextFieldDidChange(_:)), for: .editingChanged)
         usernameTextField.delegate = self
+        
         // Do any additional setup after loading the view.
     }
+    
+    
     
     func configurePinView() {
         
@@ -55,7 +59,7 @@ class AuthenticationViewController: UIViewController, AuthenticationViewModelDel
         pinView.deleteButtonAction = .deleteCurrentAndMoveToPrevious
         pinView.keyboardAppearance = .default
         pinView.tintColor = .white
-        pinView.becomeFirstResponderAtIndex = 0
+        //pinView.becomeFirstResponderAtIndex = 0
         pinView.shouldDismissKeyboardOnEmptyFirstField = false
         
         pinView.font = UIFont.systemFont(ofSize: 15)
@@ -83,8 +87,21 @@ class AuthenticationViewController: UIViewController, AuthenticationViewModelDel
         }
     }
     
+    func didFinishEnteringPin(pin:String) {
+        //showAlert(title: "Success", message: "The Pin entered is \(pin)")
+        authenticationViewModel.isPinEntered = true
+        authenticationViewModel.checkAndUpdateContinueButton()
+    }
+    
     @objc func dismissKeyboard() {
         self.view.endEditing(false)
+    }
+    
+    @objc func usernmaeTextFieldDidChange(_ textField: UITextField) {
+        //print("Username Input: " + textField.text!)
+        //authenticationViewModel.validateUserName(userName: textField.text!)
+        print("Username Input: " + (textField.text?.lowercased())!)
+        authenticationViewModel.validateUserName(userName: (textField.text?.lowercased())!)
     }
     
     func enableContinueButton()
@@ -99,30 +116,11 @@ class AuthenticationViewController: UIViewController, AuthenticationViewModelDel
         continueButton.backgroundColor = UIColor(red: 181/255, green: 166/255, blue: 255/255, alpha: 1)
     }
     
-    func didFinishEnteringPin(pin:String) {
-        //showAlert(title: "Success", message: "The Pin entered is \(pin)")
-        authenticationViewModel.isPinEntered = true
-        authenticationViewModel.checkAndUpdateContinueButton()
-    }
-    
     // MARK: Helper Functions
-    /*
-     func showAlert(title:String, message:String) {
-     let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-     alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
-     self.present(alert, animated: true, completion: nil)
-     }
-     */
-    
-    @objc func usernmaeTextFieldDidChange(_ textField: UITextField) {
-        //print("Username Input: " + textField.text!)
-        //authenticationViewModel.validateUserName(userName: textField.text!)
-        print("Username Input: " + (textField.text?.lowercased())!)
-        authenticationViewModel.validateUserName(userName: (textField.text?.lowercased())!)
-    }
+
     
     @IBAction func gotoSendFund(_ sender: Any) {
-        let request = LoginRequest(user: usernameTextField.text, pin: pinView.getPin())
+        let request = LoginRequest(user: usernameTextField.text?.lowercased(), pin: pinView.getPin())
         authenticationViewModel.loginUser(loginRequest: request)
     }
     

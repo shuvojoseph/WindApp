@@ -41,6 +41,11 @@ class SendFundViewController: UIViewController,UITextFieldDelegate,SendFundViewM
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        userInputTextField.becomeFirstResponder()
+    }
+    
     override func viewDidLayoutSubviews()
     {
         drawFundViewGradientBorderline()
