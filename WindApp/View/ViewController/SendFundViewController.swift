@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SendFundViewController: UIViewController {
+class SendFundViewController: UIViewController,UITextFieldDelegate,SendFundViewModelDelegate {
 
     @IBOutlet weak var usernameView: UIView!
     @IBOutlet weak var fundView: UIView!
@@ -19,17 +19,25 @@ class SendFundViewController: UIViewController {
     @IBOutlet weak var userWalletAdress: UILabel!
     @IBOutlet weak var userCurrency: UILabel!
     @IBOutlet weak var userBalance: UILabel!
+    @IBOutlet weak var userInputTextField: UITextField!
+    
     
     var userInfo:UserInfo?
     var accountInfo:AccountInfo?
     
+    private var sendFundViewModel = SendFundViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Send Fund"
+        sendFundViewModel.delegate = self
         changeNavigationBackButton()
         makeUsernameHolderViewCardview()
         sufficientBalance()
         loadUserData()
+        
+        userInputTextField.addTarget(self, action: #selector(userInputTextFieldDidChange(_:)), for: .editingChanged)
+        userInputTextField.delegate = self
         // Do any additional setup after loading the view.
     }
     
@@ -59,18 +67,6 @@ class SendFundViewController: UIViewController {
     {
         fundView.layer.cornerRadius = 9.0
         fundView.gradientBorder(colors: [UIColor.red , UIColor.blue], isVertical: true)
-    }
-    
-    func insufficientBalance()
-    {
-        insufficientBalanceLabel.isHidden = false
-        addFundButton.isHidden = false
-    }
-    
-    func sufficientBalance()
-    {
-        insufficientBalanceLabel.isHidden = true
-        addFundButton.isHidden = true
     }
     
     func loadUserData()
@@ -105,6 +101,40 @@ class SendFundViewController: UIViewController {
         }
     }
     
+    @IBAction func continueButtonClicked(_ sender: Any) {
+        //insufficientBalance()
+    }
+    
+    @objc func userInputTextFieldDidChange(_ textField: UITextField) {
+        
+        print("Username Input: \(String(describing: textField.text))")
+        sendFundViewModel.checkSufficientBalance(userInput: textField.text, balance: accountInfo?.balance)
+    }
+    
+    func enableInsufficientBalance() {
+        //print("enable")
+        enableContinueButton()
+        sufficientBalance()
+    }
+    
+    func disableInsufficientBalance() {
+        //print("disaable")
+        disableContinueButton()
+        insufficientBalance()
+    }
+    
+    func insufficientBalance()
+    {
+        insufficientBalanceLabel.isHidden = false
+        addFundButton.isHidden = false
+    }
+    
+    func sufficientBalance()
+    {
+        insufficientBalanceLabel.isHidden = true
+        addFundButton.isHidden = true
+    }
+    
     func enableContinueButton()
     {
         continueButton.isEnabled = true
@@ -115,10 +145,6 @@ class SendFundViewController: UIViewController {
     {
         continueButton.isEnabled = false
         continueButton.backgroundColor = UIColor(red: 181/255, green: 166/255, blue: 255/255, alpha: 1)
-    }
-    
-    @IBAction func continueButtonClicked(_ sender: Any) {
-        insufficientBalance()
     }
 
     /*

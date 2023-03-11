@@ -273,7 +273,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qtV-WX-gW3">
                                 <rect key="frame" x="301" y="350" width="66" height="34"/>
-                                <color key="backgroundColor" red="1" green="1" blue="0.99987989659999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.992771477590211" green="1" blue="0.99701014688903333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="yzn-cs-bSR"/>
                                 </constraints>
@@ -313,6 +313,7 @@
                         <outlet property="insufficientBalanceLabel" destination="fRf-EU-qLO" id="WTY-gs-lWu"/>
                         <outlet property="userBalance" destination="65b-b9-JIo" id="fir-UI-yul"/>
                         <outlet property="userCurrency" destination="SiZ-rj-bGk" id="mMV-Ep-MUo"/>
+                        <outlet property="userInputTextField" destination="Ykn-Pf-Tn1" id="IxO-cV-Eg9"/>
                         <outlet property="userName" destination="RRI-Zh-lJs" id="Tqt-ZW-gkD"/>
                         <outlet property="userWalletAdress" destination="mtX-f7-wqa" id="Pbv-b1-BMw"/>
                         <outlet property="usernameView" destination="7B6-eW-iJH" id="Rsm-0z-6k5"/>

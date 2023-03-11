@@ -23,6 +23,7 @@
 		C831C19129B870CF00E2BEB8 /* LoginValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C831C19029B870CF00E2BEB8 /* LoginValidation.swift */; };
 		C831C19429B870FD00E2BEB8 /* ValidationResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C831C19329B870FD00E2BEB8 /* ValidationResult.swift */; };
 		C831C19729B8716E00E2BEB8 /* HttpUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = C831C19629B8716E00E2BEB8 /* HttpUtility.swift */; };
+		C87F5F2129BC91C500FB5EDF /* SendFundViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C87F5F2029BC91C500FB5EDF /* SendFundViewModel.swift */; };
 		C8F5692029B9BC1C009C95EA /* JSONAble.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F5691F29B9BC1C009C95EA /* JSONAble.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +48,7 @@
 		C831C19029B870CF00E2BEB8 /* LoginValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginValidation.swift; sourceTree = "<group>"; };
 		C831C19329B870FD00E2BEB8 /* ValidationResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationResult.swift; sourceTree = "<group>"; };
 		C831C19629B8716E00E2BEB8 /* HttpUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpUtility.swift; sourceTree = "<group>"; };
+		C87F5F2029BC91C500FB5EDF /* SendFundViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendFundViewModel.swift; sourceTree = "<group>"; };
 		C8F5691F29B9BC1C009C95EA /* JSONAble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONAble.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -148,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				C831C18429B8652000E2BEB8 /* AuthenticationViewModel.swift */,
+				C87F5F2029BC91C500FB5EDF /* SendFundViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				C8242A4F29B7309B00A61E2B /* SendFundViewController.swift in Sources */,
 				C8242A3829B72CC600A61E2B /* AppDelegate.swift in Sources */,
 				C8242A3A29B72CC600A61E2B /* SceneDelegate.swift in Sources */,
+				C87F5F2129BC91C500FB5EDF /* SendFundViewModel.swift in Sources */,
 				C82B134D29B8AC4900BB9910 /* LoginRequest.swift in Sources */,
 				C8F5692029B9BC1C009C95EA /* JSONAble.swift in Sources */,
 			);
