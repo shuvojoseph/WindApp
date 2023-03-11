@@ -11,12 +11,25 @@ class SendFundViewController: UIViewController {
 
     @IBOutlet weak var usernameView: UIView!
     @IBOutlet weak var fundView: UIView!
+    @IBOutlet weak var insufficientBalanceLabel: UILabel!
+    @IBOutlet weak var addFundButton: UIButton!
+    @IBOutlet weak var continueButton: UIButton!
+    
+    @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var userWalletAdress: UILabel!
+    @IBOutlet weak var userCurrency: UILabel!
+    @IBOutlet weak var userBalance: UILabel!
+    
+    var userInfo:UserInfo?
+    var accountInfo:AccountInfo?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Send Fund"
         changeNavigationBackButton()
         makeUsernameHolderViewCardview()
-        
+        sufficientBalance()
+        loadUserData()
         // Do any additional setup after loading the view.
     }
     
@@ -46,6 +59,66 @@ class SendFundViewController: UIViewController {
     {
         fundView.layer.cornerRadius = 9.0
         fundView.gradientBorder(colors: [UIColor.red , UIColor.blue], isVertical: true)
+    }
+    
+    func insufficientBalance()
+    {
+        insufficientBalanceLabel.isHidden = false
+        addFundButton.isHidden = false
+    }
+    
+    func sufficientBalance()
+    {
+        insufficientBalanceLabel.isHidden = true
+        addFundButton.isHidden = true
+    }
+    
+    func loadUserData()
+    {
+        loadUserInfo()
+        loadAccountInfo()
+    }
+    
+    func loadUserInfo()
+    {
+        if let unwrappedUserName = userInfo?.userName
+        {
+            userName.text = "@\(unwrappedUserName)"
+        }
+        
+        if let unwrappedWalletAdress = userInfo?.walletAddress
+        {
+            userWalletAdress.text = "-\(unwrappedWalletAdress)"
+        }
+    }
+    
+    func loadAccountInfo()
+    {
+        if let unwrappedUserCurrency = accountInfo?.currency
+        {
+            userCurrency.text = unwrappedUserCurrency
+            
+            if let unwrappedUserBalance = accountInfo?.balance
+            {
+                userBalance.text = "@Balance \(unwrappedUserCurrency) \(unwrappedUserBalance)"
+            }
+        }
+    }
+    
+    func enableContinueButton()
+    {
+        continueButton.isEnabled = true
+        continueButton.backgroundColor = UIColor(red: 104/255, green: 76/255, blue: 255/255, alpha: 1)
+    }
+    
+    func disableContinueButton()
+    {
+        continueButton.isEnabled = false
+        continueButton.backgroundColor = UIColor(red: 181/255, green: 166/255, blue: 255/255, alpha: 1)
+    }
+    
+    @IBAction func continueButtonClicked(_ sender: Any) {
+        insufficientBalance()
     }
 
     /*

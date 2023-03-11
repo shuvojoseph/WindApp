@@ -141,6 +141,8 @@ class AuthenticationViewController: UIViewController, AuthenticationViewModelDel
         {
             debugPrint("Send to SendFundViewController")
             let sendFundViewController = self.storyboard?.instantiateViewController(withIdentifier: "sendFund") as! SendFundViewController
+            sendFundViewController.userInfo = loginResponse?.data?.userInfo
+            sendFundViewController.accountInfo = loginResponse?.data?.accountInfo
             self.navigationController?.pushViewController(sendFundViewController, animated: true)
         }
         else
