@@ -20,6 +20,7 @@ class SendFundViewController: UIViewController,UITextFieldDelegate,SendFundViewM
     @IBOutlet weak var userCurrency: UILabel!
     @IBOutlet weak var userBalance: UILabel!
     @IBOutlet weak var userInputTextField: UITextField!
+    @IBOutlet weak var userImage: UIImageView! 
     
     
     var userInfo:UserInfo?
@@ -91,6 +92,21 @@ class SendFundViewController: UIViewController,UITextFieldDelegate,SendFundViewM
         {
             userWalletAdress.text = "-\(unwrappedWalletAdress)"
         }
+        
+        makeUserImageCircular()
+        if let userImageUrl = userInfo?.profileImage
+        {
+            userImage.downloaded(from: userImageUrl)
+        }
+    }
+    
+    func makeUserImageCircular()
+    {
+        userImage.layer.borderWidth = 1.0
+        userImage.layer.masksToBounds = false
+        userImage.layer.borderColor = UIColor.white.cgColor
+        userImage.layer.cornerRadius = userImage.frame.size.width / 2
+        userImage.clipsToBounds = true
     }
     
     func loadAccountInfo()
@@ -196,5 +212,26 @@ extension UIView {
         //Add layer to view
         self.layer.addSublayer(gradient)
         gradient.zPosition = 0
+    }
+}
+
+extension UIImageView {
+    func downloaded(from url: URL, contentMode mode: ContentMode = .scaleAspectFit) {
+        contentMode = mode
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard
+                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                let data = data, error == nil,
+                let image = UIImage(data: data)
+                else { return }
+            DispatchQueue.main.async() { [weak self] in
+                self?.image = image
+            }
+        }.resume()
+    }
+    func downloaded(from link: String, contentMode mode: ContentMode = .scaleAspectFit) {
+        guard let url = URL(string: link) else { return }
+        downloaded(from: url, contentMode: mode)
     }
 }

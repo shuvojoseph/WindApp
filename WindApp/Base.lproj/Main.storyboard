@@ -313,6 +313,7 @@
                         <outlet property="insufficientBalanceLabel" destination="fRf-EU-qLO" id="WTY-gs-lWu"/>
                         <outlet property="userBalance" destination="65b-b9-JIo" id="fir-UI-yul"/>
                         <outlet property="userCurrency" destination="SiZ-rj-bGk" id="mMV-Ep-MUo"/>
+                        <outlet property="userImage" destination="OVU-yF-G8D" id="7d6-EA-yR8"/>
                         <outlet property="userInputTextField" destination="Ykn-Pf-Tn1" id="IxO-cV-Eg9"/>
                         <outlet property="userName" destination="RRI-Zh-lJs" id="Tqt-ZW-gkD"/>
                         <outlet property="userWalletAdress" destination="mtX-f7-wqa" id="Pbv-b1-BMw"/>
