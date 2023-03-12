@@ -30,7 +30,7 @@ extension SendFundViewController
     func drawFundViewGradientBorderline()
     {
         fundView.layer.cornerRadius = 9.0
-        fundView.gradientBorder(colors: [UIColor.red , UIColor.blue], isVertical: true)
+        fundView.gradientBorder(colors: [UIColor(red: 252/255, green: 171/255, blue: 113/255, alpha: 1) , UIColor(red: 128/255, green: 90/255, blue: 234/255, alpha: 1)], isVertical: true)
     }
     
     func loadUserData()
@@ -75,7 +75,7 @@ extension SendFundViewController
             
             if let unwrappedUserBalance = accountInfo?.balance
             {
-                userBalance.text = "@Balance \(unwrappedUserCurrency) \(unwrappedUserBalance)"
+                userBalance.text = "Balance \(unwrappedUserCurrency) \(unwrappedUserBalance)"
             }
         }
     }
@@ -130,8 +130,8 @@ extension UIView {
 
         //Set gradient direction
         if(isVertical){
-            gradient.startPoint = CGPoint(x: 0, y: 1)
-            gradient.endPoint = CGPoint(x: 1, y: 0)
+            gradient.startPoint = CGPoint(x: 0, y: 0.5)
+            gradient.endPoint = CGPoint(x: 1, y: 0.5)
         }
         else {
             gradient.startPoint = CGPoint(x: 0, y: 0.5)
